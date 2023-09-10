@@ -2,7 +2,7 @@ FROM        ghcr.io/blademindeu/yolks:debian
 
 LABEL       author="Manuel Dielacher" maintainer="th3dilli@gmx.at"
 
-LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
+LABEL       org.opencontainers.image.source="https://github.com/blademindeu/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 RUN			dpkg --add-architecture i386 \
