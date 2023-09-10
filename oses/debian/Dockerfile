@@ -2,7 +2,7 @@ FROM        --platform=$TARGETOS/$TARGETARCH debian:buster-slim
 
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
-LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
+LABEL       org.opencontainers.image.source="https://github.com/blademindeu/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 RUN         apt update && apt upgrade -y \
@@ -11,13 +11,13 @@ RUN         apt update && apt upgrade -y \
     			liblua5.3 libz-dev rapidjson-dev \
 				&& update-locale lang=en_US.UTF-8 \
 				&& dpkg-reconfigure --frontend noninteractive locales \
-				&& useradd -m -d /home/container -s /bin/bash container
+				&& useradd -m -d /home/blademind -s /bin/bash container
 
 USER        container
-ENV         USER=container HOME=/home/container
+ENV         USER=container HOME=/home/blademind
 ENV         DEBIAN_FRONTEND noninteractive
 
-WORKDIR     /home/container
+WORKDIR     /home/blademind
 
 COPY        ./entrypoint.sh /entrypoint.sh
 CMD         [ "/bin/bash", "/entrypoint.sh" ]

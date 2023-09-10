@@ -24,7 +24,7 @@ FROM 		--platform=$TARGETOS/$TARGETARCH debian:bullseye-slim
 
 LABEL       author="Isaac A." maintainer="isaac@isaacs.site"
 
-LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
+LABEL       org.opencontainers.image.source="https://github.com/blademindeu/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 ENV         DEBIAN_FRONTEND=noninteractive
@@ -37,12 +37,12 @@ RUN			dpkg --add-architecture i386 \
 			&& apt install -y nodejs \
 			&& mkdir /node_modules \
 			&& npm install --prefix / ws \
-			&& useradd -d /home/container -m container
+			&& useradd -d /home/blademind -m container
 
 USER 		container
-ENV  		USER=container HOME=/home/container
+ENV  		USER=container HOME=/home/blademind
 
-WORKDIR 	/home/container
+WORKDIR 	/home/blademind
 
 COPY 		./entrypoint.sh /entrypoint.sh
 COPY 		./wrapper.js /wrapper.js
