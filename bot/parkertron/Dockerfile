@@ -10,10 +10,10 @@ RUN     apt update -y \
         # additional packages for tesseract and eng lang support
         libtesseract-dev tesseract-ocr-eng \
         # add container user to run application
-     && useradd -m -d /home/blademind container
+     && useradd -m -d /home/blademind blademind
 
-USER    container
-ENV     USER=container HOME=/home/blademind
+USER    blademind
+ENV     USER=blademind HOME=/home/blademind
 WORKDIR /home/blademind
 
 COPY    ./entrypoint.sh /entrypoint.sh

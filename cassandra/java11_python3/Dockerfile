@@ -6,10 +6,10 @@ LABEL       org.opencontainers.image.source="https://github.com/blademindeu/yolk
 LABEL       org.opencontainers.image.licenses=MIT
 
 RUN         apk add --update --no-cache python3 py3-tz ca-certificates curl fontconfig git openssl sqlite tar tzdata \
-			    && adduser -D -h /home/blademind container
+			    && adduser -D -h /home/blademind blademind
 
-USER        container
-ENV         USER=container HOME=/home/blademind
+USER        blademind
+ENV         USER=blademind HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./../entrypoint.sh /entrypoint.sh

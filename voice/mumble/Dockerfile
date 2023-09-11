@@ -8,10 +8,10 @@ LABEL     org.opencontainers.image.licenses=MIT
 ##    install dependencies
 RUN   apk add --no-cache murmur
 
-RUN   adduser -D container
+RUN   adduser -D blademind
 
-USER   container
-ENV    USER=container HOME=/home/blademind
+USER   blademind
+ENV    USER=blademind HOME=/home/blademind
 WORKDIR /home/blademind
 
 COPY  ./entrypoint.sh /entrypoint.sh

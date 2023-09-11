@@ -13,8 +13,8 @@ RUN         apt update -y \
 			&& ./dotnet-install.sh -i /usr/share -v $D_V \
             && ln -s /usr/share/dotnet /usr/bin/dotnet
 
-USER        container
-ENV         USER=container HOME=/home/blademind
+USER        blademind
+ENV         USER=blademind HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./../entrypoint.sh /entrypoint.sh

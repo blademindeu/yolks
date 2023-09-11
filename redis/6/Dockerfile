@@ -10,10 +10,10 @@ ENV     DEBIAN_FRONTEND noninteractive
 RUN     apt -y update && \
         apt -y upgrade && \
         apt -y install iproute2 && \
-        useradd -d /home/blademind -m container -s /bin/bash
+        useradd -d /home/blademind -m blademind -s /bin/bash
 
-USER    container
-ENV     USER=container HOME=/home/blademind
+USER    blademind
+ENV     USER=blademind HOME=/home/blademind
 WORKDIR /home/blademind
 
 COPY    ./entrypoint.sh /entrypoint.sh

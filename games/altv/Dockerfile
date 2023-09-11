@@ -7,7 +7,7 @@ LABEL   author="goover" maintainer="info@goover.de"
 
 ENV     DEBIAN_FRONTEND noninteractive
 
-RUN     useradd -m -d /home/blademind -s /bin/bash container
+RUN     useradd -m -d /home/blademind -s /bin/bash blademind
 
 RUN     apt update -y \
         && apt upgrade -y \
@@ -23,8 +23,8 @@ RUN     wget https://packages.microsoft.com/config/debian/11/packages-microsoft-
 RUN     update-locale lang=en_US.UTF-8 \
         && dpkg-reconfigure --frontend noninteractive locales
 
-USER    container
-ENV     USER=container HOME=/home/blademind
+USER    blademind
+ENV     USER=blademind HOME=/home/blademind
 WORKDIR /home/blademind
 
 COPY    ./entrypoint.sh /entrypoint.sh

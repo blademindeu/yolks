@@ -10,10 +10,10 @@ RUN apt update && apt install --no-install-recommends -y curl \
  ## install bastion reqs
  && apt install -y python3 build-essential git libtool netcat ffmpeg iproute2 tzdata \
  ## add container user
- && useradd -d /home/blademind -m container -s /bin/bash
+ && useradd -d /home/blademind -m blademind -s /bin/bash
 
-USER        container
-ENV         USER=container HOME=/home/blademind
+USER        blademind
+ENV         USER=blademind HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./entrypoint.sh /entrypoint.sh

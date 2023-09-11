@@ -10,8 +10,8 @@ RUN         sh -c 'echo "deb https://download.mono-project.com/repo/debian stabl
 RUN         apt update
 RUN         apt install -y mono-complete lib32gcc-s1
 
-USER        container
-ENV         USER=container HOME=/home/blademind
+USER        blademind
+ENV         USER=blademind HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./entrypoint.sh /entrypoint.sh

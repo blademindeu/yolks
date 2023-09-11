@@ -4,10 +4,10 @@ LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
 RUN         apt update \
             && apt -y install git gcc g++ ca-certificates dnsutils curl iproute2 ffmpeg procps \
-            && useradd -m -d /home/blademind container
+            && useradd -m -d /home/blademind blademind
 
-USER        container
-ENV         USER=container HOME=/home/blademind
+USER        blademind
+ENV         USER=blademind HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./../entrypoint.sh /entrypoint.sh

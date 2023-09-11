@@ -9,14 +9,14 @@ RUN         dpkg --add-architecture i386 \
             && apt upgrade -y \
             && apt install -y libstdc++6 lib32stdc++6 tar curl iproute2 openssl fontconfig dirmngr ca-certificates dnsutils tzdata zip  \
             && apt install -y libtbb2:i386 libtbb-dev:i386 libicu-dev:i386  \
-            && useradd -d /home/blademind -m container
+            && useradd -d /home/blademind -m blademind
 
 RUN         mkdir -p /run/systemd && echo 'docker' > /run/systemd/container
 RUN         rm -rf /var/lib/apt/lists/*
 
 
-USER        container
-ENV         USER=container HOME=/home/blademind
+USER        blademind
+ENV         USER=blademind HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./entrypoint.sh /entrypoint.sh

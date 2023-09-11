@@ -5,7 +5,7 @@ LABEL author="Michael Parker" maintainer="parker@pterodactyl.io"
 ENV   DEBIAN_FRONTEND noninteractive
 
 ## add container user
-RUN   useradd -m -d /home/blademind -s /bin/bash container
+RUN   useradd -m -d /home/blademind -s /bin/bash blademind
 
 ## update base packages
 RUN   apt update \
