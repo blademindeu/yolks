@@ -12,7 +12,7 @@ export INTERNAL_IP
 cd /home/blademind || exit 1
 
 # Print minetest version
-printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mminetest --version\n"
+printf "\033[1m\033[33mblademind@pterodactyl~ \033[0mminetest --version\n"
 minetest --version
 
 # Replace Startup Variables
