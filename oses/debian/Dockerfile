@@ -2,7 +2,7 @@ FROM         --platform=$TARGETOS/$TARGETARCH debian:bullseye-slim
 
 LABEL        author="Michael Parker" maintainer="parker@pterodactyl.io"
 
-LABEL        org.opencontainers.image.source="https://github.com/blademindeu/yolks"
+LABEL        org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
 LABEL        org.opencontainers.image.licenses=MIT
 
 ENV          DEBIAN_FRONTEND noninteractive
@@ -31,4 +31,3 @@ WORKDIR     /home/blademind
 
 COPY        ./entrypoint.sh /entrypoint.sh
 CMD         [ "/bin/bash", "/entrypoint.sh" ]
-
