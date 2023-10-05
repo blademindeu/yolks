@@ -7,11 +7,11 @@ LABEL        org.opencontainers.image.licenses=MIT
 
 ENV          DEBIAN_FRONTEND noninteractive
 
-RUN          useradd -m -d /home/blademind -s /bin/bash blademind
+RUN          useradd -m -d /home/blademind -s /bin/bash container
 
 RUN          ln -s /home/blademind/ /nonexistent
 
-ENV          USER=blademind HOME=/home/blademind
+ENV          USER=container HOME=/home/blademind
 
 ## Update base packages
 RUN          apt update \
