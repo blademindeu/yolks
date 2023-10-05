@@ -41,9 +41,9 @@ RUN           mkdir -p /home/blademind/.config/Red-DiscordBot/
 RUN           ln -s /home/blademind/.config/Red-DiscordBot/ /usr/local/share/Red-DiscordBot
 
 ## Setup user and working directory
-RUN         useradd -m -d /home/blademind -s /bin/bash blademind
-USER        blademind
-ENV         USER=blademind HOME=/home/blademind
+RUN         useradd -m -d /home/blademind -s /bin/bash container
+USER        container
+ENV         USER=container HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./entrypoint.sh /entrypoint.sh

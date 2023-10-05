@@ -42,10 +42,10 @@ RUN   chmod a+rx /usr/local/bin/youtube-dl
 
 RUN   update-alternatives --install  /usr/bin/python python /usr/bin/python3 1000
 
-RUN   useradd -m -d /home/blademind blademind
+RUN   useradd -m -d /home/blademind container
 
 USER   blademind
-ENV    USER=blademind HOME=/home/blademind
+ENV    USER=container HOME=/home/blademind
 WORKDIR /home/blademind
 
 COPY  ./entrypoint.sh /entrypoint.sh

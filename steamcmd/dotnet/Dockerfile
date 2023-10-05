@@ -26,8 +26,8 @@ RUN         cd /tmp/ \
             && tar xvf rcon.tar.gz \
             && mv rcon-0.10.3-amd64_linux/rcon /usr/local/bin/
 
-USER    blademind
-ENV     USER=blademind HOME=/home/blademind
+USER    container
+ENV     USER=container HOME=/home/blademind
 WORKDIR /home/blademind
 
 COPY        ../entrypoint.sh /entrypoint.sh

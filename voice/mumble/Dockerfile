@@ -11,7 +11,7 @@ RUN   apk add --no-cache murmur
 RUN   adduser -D blademind
 
 USER   blademind
-ENV    USER=blademind HOME=/home/blademind
+ENV    USER=container HOME=/home/blademind
 WORKDIR /home/blademind
 
 COPY  ./entrypoint.sh /entrypoint.sh

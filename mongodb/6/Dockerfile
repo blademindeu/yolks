@@ -11,8 +11,8 @@ RUN         apt update -y \
             && apt install -y netcat iproute2 \
             && useradd -d /home/blademind -m blademind -s /bin/bash
 
-USER        blademind
-ENV         USER=blademind HOME=/home/blademind
+USER        container
+ENV         USER=container HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./entrypoint.sh /entrypoint.sh

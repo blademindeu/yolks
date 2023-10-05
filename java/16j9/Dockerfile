@@ -17,9 +17,9 @@ RUN         apt update -y \
 					libfreetype6
 
 ## Setup user and working directory
-RUN         useradd -m -d /home/blademind -s /bin/bash blademind
-USER        blademind
-ENV         USER=blademind HOME=/home/blademind
+RUN         useradd -m -d /home/blademind -s /bin/bash container
+USER        container
+ENV         USER=container HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./../entrypoint.sh /entrypoint.sh

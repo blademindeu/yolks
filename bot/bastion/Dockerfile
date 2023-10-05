@@ -12,8 +12,8 @@ RUN apt update && apt install --no-install-recommends -y curl \
  ## add container user
  && useradd -d /home/blademind -m blademind -s /bin/bash
 
-USER        blademind
-ENV         USER=blademind HOME=/home/blademind
+USER        container
+ENV         USER=container HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./entrypoint.sh /entrypoint.sh

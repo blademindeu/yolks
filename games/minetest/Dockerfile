@@ -8,8 +8,8 @@ RUN         apt update -y \
 RUN			add-apt-repository -y ppa:minetestdevs/stable
 RUN			apt update && apt -y install minetest
 
-USER        blademind
-ENV         USER=blademind HOME=/home/blademind
+USER        container
+ENV         USER=container HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./entrypoint.sh /entrypoint.sh

@@ -5,7 +5,7 @@ LABEL author="Daniel Barton" maintainer="danny6167@gmail.com"
 ENV   DEBIAN_FRONTEND noninteractive
 
 ## add container user
-RUN   useradd -m -d /home/blademind -s /bin/bash blademind
+RUN   useradd -m -d /home/blademind -s /bin/bash container
 
 
 
@@ -21,7 +21,7 @@ RUN   update-locale lang=en_US.UTF-8 \
         &&   dpkg-reconfigure --frontend noninteractive locales
 
 
-ENV         USER=blademind HOME=/home/blademind
+ENV         USER=container HOME=/home/blademind
 WORKDIR     /home/blademind
 
 

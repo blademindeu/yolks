@@ -4,10 +4,10 @@ LABEL       author="Ethan Coward" maintainer="ethan.coward@icloud.com"
 
 RUN         apt update \
                 && apt -y install git dnsutils curl iproute2 ffmpeg \
-                && useradd -m -d /home/blademind blademind
+                && useradd -m -d /home/blademind container
 
-USER        blademind
-ENV         USER=blademind HOME=/home/blademind CARGO_HOME=/home/blademind/.cargo
+USER        container
+ENV         USER=container HOME=/home/blademind CARGO_HOME=/home/blademind/.cargo
 WORKDIR     /home/blademind
 
 COPY        ./../entrypoint.sh /entrypoint.sh

@@ -14,8 +14,8 @@ RUN         apt update -y \
             && ln -s /usr/share/dotnet /usr/bin/dotnet
 
 
-USER        blademind
-ENV         USER=blademind HOME=/home/blademind
+USER        container
+ENV         USER=container HOME=/home/blademind
 WORKDIR     /home/blademind
 
 COPY        ./../entrypoint.sh /entrypoint.sh
