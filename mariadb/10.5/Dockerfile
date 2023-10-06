@@ -9,7 +9,7 @@ ENV         DEBIAN_FRONTEND noninteractive
 
 RUN         apt update -y \
             && apt install -y netcat \
-            && useradd -d /home/blademind -m blademind -s /bin/bash
+            && useradd -d /home/blademind -m container -s /bin/bash
 
 USER        container
 ENV         USER=container HOME=/home/blademind

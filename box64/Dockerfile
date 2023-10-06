@@ -25,7 +25,7 @@ RUN         wget https://ryanfortner.github.io/box64-debs/box64.list -O /etc/apt
 
 
 
-RUN		useradd -d /home/blademind -m blademind
+RUN		useradd -d /home/blademind -m container
 USER    container
 ENV     USER=container HOME=/home/blademind
 WORKDIR /home/blademind
