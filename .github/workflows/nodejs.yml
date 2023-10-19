@@ -25,7 +25,7 @@ jobs:
           - 20
     steps:
       - uses: actions/checkout@v3
-      # Setup QEMU for ARM64 Build 
+      # Setup QEMU for ARM64 Build  
       - uses: docker/setup-qemu-action@v2
       - uses: docker/setup-buildx-action@v2
         with:
