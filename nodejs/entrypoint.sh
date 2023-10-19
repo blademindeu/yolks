@@ -5,7 +5,7 @@ cd /home/blademind
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
-# Print Node.js Version 1
+# Print Node.js Version
 node -v
 
 # Replace Startup Variables
