@@ -9,7 +9,7 @@ LABEL       author="Torsten Widmann" maintainer="info@goover.de"
 RUN         dpkg --add-architecture i386
 RUN         apt update
 RUN         apt install -y --no-install-recommends wget iproute2 gnupg2 software-properties-common libntlm0 winbind xvfb xauth libncurses5-dev:i386 libncurses6 dbus libgdiplus lib32gcc-s1
-RUN         apt install -y alsa-tools libpulse0 pulseaudio libpulse-dev libasound2 libao-common gnutls-bin gnupg locales numactl cabextract curl python3 python3-pip python3-setuptools
+RUN         apt install -y alsa-tools libpulse0 pulseaudio libpulse-dev libasound2 libao-common gnutls-bin gnupg locales numactl cabextract curl python3 python3-pip python3-setuptools tini file
 RUN         useradd -d /home/blademind -m container
 
 # Download Proton GE
@@ -40,5 +40,9 @@ USER        container
 ENV         USER=container HOME=/home/blademind
 WORKDIR     /home/blademind
 
-COPY        ./../entrypoint.sh /entrypoint.sh
-CMD         [ "/bin/bash", "/entrypoint.sh" ]
+STOPSIGNAL SIGINT
+
+COPY        --chown=container:container ./../entrypoint.sh /entrypoint.sh
+RUN         chmod +x /entrypoint.sh
+ENTRYPOINT  ["/usr/bin/tini", "-g", "--"]
+CMD         ["/entrypoint.sh"]

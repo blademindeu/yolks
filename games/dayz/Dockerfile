@@ -2,7 +2,7 @@ FROM        --platform=$BUILDPLATFORM debian:bullseye-slim
 
 LABEL       author="David Wolfe (Red-Thirten)" maintainer="rehlmgaming@gmail.com"
 
-LABEL       org.opencontainers.image.source="https://github.com/parkervcp/yolks"
+LABEL       org.opencontainers.image.source="https://github.com/blademindeu/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 ## Update base packages and install dependencies
@@ -26,7 +26,8 @@ RUN         dpkg --add-architecture i386 \
                 libstdc++6:i386 \
                 lib32stdc++6 \
                 libcap2 \
-                libnss-wrapper
+                libnss-wrapper \
+                tini
 
 ## Configure locale
 RUN         update-locale lang=en_US.UTF-8 \
@@ -45,6 +46,9 @@ USER        container
 ENV         USER=container HOME=/home/blademind
 WORKDIR     /home/blademind
 
-## Copy over and execute entrypoint.sh
-COPY        ./entrypoint.sh /entrypoint.sh
-CMD         [ "/bin/bash", "/entrypoint.sh" ]
+STOPSIGNAL SIGINT
+
+COPY        --chown=container:container ./entrypoint.sh /entrypoint.sh
+RUN         chmod +x /entrypoint.sh
+ENTRYPOINT    ["/usr/bin/tini", "-g", "--"]
+CMD         ["/entrypoint.sh"]

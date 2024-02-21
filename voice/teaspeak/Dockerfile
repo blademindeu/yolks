@@ -34,19 +34,23 @@ RUN       apt update \
           &&   apt upgrade -y
 
 ##    install dependencies
-RUN   apt install -y ffmpeg curl python3 iproute2 libjemalloc2
+RUN   apt install -y ffmpeg curl python3 iproute2 libjemalloc2 tini
 
 # Install latest youtube-dl
-RUN   curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+RUN   curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/youtube-dl
 RUN   chmod a+rx /usr/local/bin/youtube-dl
 
 RUN   update-alternatives --install  /usr/bin/python python /usr/bin/python3 1000
 
 RUN   useradd -m -d /home/blademind container
 
-USER   blademind
+USER   container
 ENV    USER=container HOME=/home/blademind
 WORKDIR /home/blademind
 
-COPY  ./entrypoint.sh /entrypoint.sh
-CMD   ["/bin/bash", "/entrypoint.sh"]
+STOPSIGNAL SIGINT
+
+COPY        --chown=container:container ./entrypoint.sh /entrypoint.sh
+RUN         chmod +x /entrypoint.sh
+ENTRYPOINT    ["/usr/bin/tini", "-g", "--"]
+CMD         ["/entrypoint.sh"]

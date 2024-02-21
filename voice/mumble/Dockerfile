@@ -6,13 +6,17 @@ LABEL     org.opencontainers.image.source="https://github.com/blademindeu/yolks"
 LABEL     org.opencontainers.image.licenses=MIT
 
 ##    install dependencies
-RUN   apk add --no-cache murmur
+RUN   apk add --no-cache murmur tini
 
-RUN   adduser -D blademind
+RUN   adduser -D container
 
-USER   blademind
+USER   container
 ENV    USER=container HOME=/home/blademind
 WORKDIR /home/blademind
 
-COPY  ./entrypoint.sh /entrypoint.sh
-CMD   ["/bin/ash", "/entrypoint.sh"]
+STOPSIGNAL SIGINT
+
+COPY        --chown=container:container ./entrypoint.sh /entrypoint.sh
+RUN         chmod +x /entrypoint.sh
+ENTRYPOINT    ["/sbin/tini", "-g", "--"]
+CMD         ["/entrypoint.sh"]
