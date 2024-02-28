@@ -8,7 +8,7 @@ RUN         apt update \
 
 RUN         npm install npm@8.11.0 typescript ts-node @types/node --location=global
 
-RUN         npm install npm@latest better-sqlite3 --location=global
+RUN         npm install better-sqlite3
 
 USER        container
 ENV         USER=container HOME=/home/blademind
