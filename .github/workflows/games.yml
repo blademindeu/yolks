@@ -22,6 +22,7 @@ jobs:
           - mohaa
           - samp
           - source
+          - rust
           - valheim
           
     steps:
