@@ -30,8 +30,6 @@ LABEL       org.opencontainers.image.licenses=MIT
 RUN         apk add --update --no-cache ca-certificates curl ffmpeg git openssl sqlite tar tzdata \
 	&& adduser -D -h /home/blademind container
 
-RUN         npm install better-sqlite3 --location=global
-
 USER        container
 ENV         USER=container HOME=/home/blademind
 WORKDIR     /home/blademind
